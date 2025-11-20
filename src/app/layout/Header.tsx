@@ -9,6 +9,9 @@ export default function Header() {
           تکنولوژی‌ها
         </button>
         <button className="text-amber-50 hover:text-sky-300 transition-colors cursor-pointer">
+          تجربیات
+        </button>
+        <button className="text-amber-50 hover:text-sky-300 transition-colors cursor-pointer">
           پروژه‌ها
         </button>
       </nav>

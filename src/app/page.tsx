@@ -38,46 +38,79 @@ export default function Home() {
   }, []);
 
   const technologies = [
-    // Languages & Frameworks
-    { name: "HTML", logo: "/logos/html.svg", color: "#E34F26" },
-    { name: "CSS", logo: "/logos/css.svg", color: "#1572B6" },
-    { name: "JavaScript", logo: "/logos/javascript.svg", color: "#F7DF1E" },
-    { name: "TypeScript", logo: "/logos/typescript.svg", color: "#3178C6" },
-    // Libraries & Tools
-    { name: "React.js", logo: "/logos/react.svg", color: "#61DAFB" },
-    { name: "Next.js", logo: "/logos/nextjs.svg", color: "#000000" },
-    { name: "Vite", logo: "/logos/vite.svg", color: "#646CFF" },
-    { name: "Electron.js", logo: "/logos/electron.svg", color: "#47848F" },
-    // Styling
-    { name: "Tailwind CSS", logo: "/logos/tailwind.svg", color: "#38BDF8" },
-    { name: "Materialize", logo: "/logos/materialize.svg", color: "#EE6E73" },
-    { name: "Sass", logo: "/logos/sass.svg", color: "#CC6699" },
-    // State Management
-    { name: "Context API", logo: "/logos/context.svg", color: "#61DAFB" },
-    { name: "Redux", logo: "/logos/redux.svg", color: "#764ABC" },
-    // Animations & Charts
-    { name: "GSAP", logo: "/logos/gsap.svg", color: "#88CE02" },
-    { name: "Chart.js", logo: "/logos/chartjs.svg", color: "#FF6384" },
-    { name: "React Slick", logo: "/logos/slick.svg", color: "#00D1B2" },
-    { name: "lenis", logo: "/logos/lenis.svg", color: "#FF6D00" },
-    // Database & APIs
-    { name: "PostgreSQL", logo: "/logos/postgresql.svg", color: "#336791" },
-    { name: "REST API", logo: "/logos/rest.svg", color: "#FF6F61" },
-    { name: "API Routes", logo: "/logos/api.svg", color: "#000000" },
-    { name: "Prisma", logo: "/logos/prisma.svg", color: "#0C344B" },
-    // Version Control
-    { name: "Git", logo: "/logos/git.svg", color: "#F05032" },
-    { name: "GitHub", logo: "/logos/github.svg", color: "#181717" },
+    { name: "HTML", logo: "/logos/html5-original.png", color: "#E34F26" },
+    { name: "CSS", logo: "/logos/css3-original.png", color: "#1572B6" },
+    {
+      name: "JavaScript",
+      logo: "/logos/javascript-original.png",
+      color: "#F7DF1E",
+    },
+    {
+      name: "TypeScript",
+      logo: "/logos/typescript-original.png",
+      color: "#3178C6",
+    },
+    { name: "React.js", logo: "/logos/react-original.png", color: "#61DAFB" },
+    { name: "Next.js", logo: "/logos/nextjs-original.png", color: "#000000" },
+    { name: "Vite", logo: "/logos/vitejs.svg", color: "#646CFF" },
+    {
+      name: "Electron.js",
+      logo: "/logos/electron-original.png",
+      color: "#47848F",
+    },
+    {
+      name: "Tailwind CSS",
+      logo: "/logos/tailwind-css-2.svg",
+      color: "#38BDF8",
+    },
+    { name: "Sass", logo: "/logos/sass-original.png", color: "#CC6699" },
+    { name: "Redux", logo: "/logos/redux-original.png", color: "#764ABC" },
+    { name: "GSAP", logo: "/logos/gsap-greensock.svg", color: "#88CE02" },
+    {
+      name: "PostgreSQL",
+      logo: "/logos/postgresql-original.png",
+      color: "#336791",
+    },
+    { name: "Prisma", logo: "/logos/prisma-3.svg", color: "#0C344B" },
+    { name: "Git", logo: "/logos/git-original.png", color: "#F05032" },
+    { name: "GitHub", logo: "/logos/github-original.png", color: "#181717" },
   ];
 
+  const projects = [
+    {
+      name: "جهان جدید",
+      img: "./img/new-world.jpg",
+      link: "https://github.com/Aria-Hosseini/New-World-Website-",
+    },
+    {
+      name: "مینی شاپ",
+      img: "./img/minishop.jpg",
+      link: "https://github.com/Aria-Hosseini/minishop",
+    },
+    {
+      name: "وبلاگ من",
+      img: "./img/my-blog.jpg",
+      link: "https://github.com/Aria-Hosseini/My-Blog",
+    },
+    {
+      name: "روانگر",
+      img: "./img/ravangar.jpg",
+      link: "https://github.com/Aria-Hosseini/Ravangar",
+    },
+    {
+      name: "اپ دسکتاپ آب و هوا",
+      img: "./img/weather-all.jpg",
+      link: "https://github.com/Aria-Hosseini/weather-all-app",
+    },
+  ];
   return (
     <>
       <div
         className="h-screen overflow-y-scroll snap-y snap-mandatory"
         dir="ltr"
       >
-        <section className="min-h-screen snap-start text-center bg-zinc-900 text-slate-100 p-3">
-          <div className="flex flex-col items-center justify-center mb-25">
+        <section className="relative min-h-screen snap-start text-center bg-zinc-900 text-slate-100 p-3 overflow-hidden">
+          <div className="relative z-10 flex flex-col items-center justify-center mb-25">
             <img
               id="my-img"
               src="/img/me.jpg"
@@ -107,10 +140,10 @@ export default function Home() {
             <h3 className="text-amber-50 text-2xl">درباره من</h3>
             <div className="w-260">
               <p className="text-center text-gray-100">
-                I’m Aria Hosseini, a Front-End Web Developer with 3+ years of
-                experience building modern, dynamic web applications. I enjoy
-                creating seamless, scalable interfaces and continuously learning
-                to improve my craft. Flexible, creative, and team oriented.
+                من آریا حسینی هستم، یک توسعه‌دهنده وب فرانت‌اند با بیش از ۳ سال
+                تجربه در ساخت برنامه‌های وب مدرن و پویا. از ایجاد رابط‌های
+                یکپارچه و مقیاس‌پذیر لذت می‌برم و به طور مداوم در حال یادگیری
+                برای بهبود مهارت‌هایم هستم. منعطف، خلاق و اهل کار تیمی.
               </p>
             </div>
           </div>
@@ -141,17 +174,93 @@ export default function Home() {
 
         <section
           id="sec4"
-          className="min-h-screen snap-start flex justify-center items-center bg-zinc-900"
+          className="min-h-screen snap-start flex flex-col justify-center items-center bg-zinc-800 text-amber-50 px-6 py-20"
         >
-          <span className="text-amber-50 text-2xl">تجربیات</span>
+          <h2 className="text-3xl font-bold mb-12 text-center">تجربیات</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
+            <div className="bg-zinc-900 rounded-2xl p-6 border border-zinc-700 hover:border-sky-500 shadow-lg transition-all">
+              <h3 className="text-xl font-semibold mb-2 text-sky-400">
+                Freelance Front-End Developer
+              </h3>
+              <p className="text-zinc-300 leading-relaxed text-sm">
+                Worked independently on diverse web projects, focusing on modern
+                front-end technologies, scalability, and user experience.
+                Continuously learning and improving technical expertise to stay
+                aligned with the latest web development trends.
+              </p>
+            </div>
+
+            <div className="bg-zinc-900 rounded-2xl p-6 border border-zinc-700 hover:border-sky-500 shadow-lg transition-all">
+              <h3 className="text-xl font-semibold mb-2 text-sky-400">
+                Front-End Developer at Hooti Bot Team
+              </h3>
+              <p className="text-zinc-300 leading-relaxed text-sm">
+                Front-End Developer specializing in React.js and Next.js,
+                building high-performance web interfaces and gaining valuable
+                teamwork experience through close collaboration with the
+                back-end team.
+              </p>
+            </div>
+          </div>
         </section>
 
         <section
           id="sec4"
           className="min-h-screen snap-start flex justify-center items-center bg-zinc-900"
         >
-          <span className="text-amber-50 text-2xl">پروژه ها</span>
+          <div className="flex flex-col items-center justify-center mt-12">
+            <span className="text-amber-50 text-2xl font-bold">پروژه ها</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+              {projects.map((item, i) => (
+                <a
+                  key={i}
+                  href={item.link}
+                  target="_blank"
+                  className="group block bg-zinc-900 rounded-2xl overflow-hidden shadow-lg border border-zinc-800 hover:border-sky-500 transition-all duration-300"
+                >
+                  <div className="relative w-full h-48 overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  </div>
+
+                  <div className="p-4 flex items-center justify-between">
+                    <h3 className="text-white font-semibold text-lg">
+                      {item.name}
+                    </h3>
+                    <span className="text-sky-400 text-sm opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      مشاهده →
+                    </span>
+                  </div>
+                </a>
+              ))}
+              <a
+                target="_blank"
+                href="https://github.com/Aria-Hosseini?tab=repositories"
+              >
+                <div
+                  className="w-full h-63 rounded-2xl bg-zinc-900 border border-zinc-800 
+                  flex items-center justify-center text-white text-xl font-semibold
+                hover:border-sky-500 hover:bg-zinc-800/60 transition-all duration-300 
+                  cursor-pointer select-none 
+                  bg-[radial-gradient(circle,_rgba(255,255,255,0.20)_2px,_transparent_1px)]
+                  bg-[size:18px_18px]
+                  "
+                >
+                  سایر پروژه‌ها
+                </div>
+              </a>
+            </div>
+          </div>
         </section>
+
+        <footer>
+          
+        </footer>
       </div>
     </>
   );
