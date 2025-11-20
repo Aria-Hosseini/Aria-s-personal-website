@@ -2,11 +2,12 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GoMoveToBottom } from "react-icons/go";
 
 export default function Home() {
   const [showButton, setShowButton] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -36,6 +37,21 @@ export default function Home() {
       ease: "expoScale(0.5,7,none)",
     });
   }, []);
+
+  const scrollToNextSection = () => {
+    const container = containerRef.current;
+    if (container) {
+      const currentScroll = container.scrollTop;
+      const containerHeight = container.clientHeight;
+      const nextSection = Math.floor(currentScroll / containerHeight) + 1;
+      const targetScroll = nextSection * containerHeight;
+      
+      container.scrollTo({
+        top: targetScroll,
+        behavior: "smooth"
+      });
+    }
+  };
 
   const technologies = [
     { name: "HTML", logo: "/logos/html5-original.png", color: "#E34F26" },
@@ -106,6 +122,7 @@ export default function Home() {
   return (
     <>
       <div
+        ref={containerRef}
         className="h-screen overflow-y-scroll snap-y snap-mandatory"
         dir="ltr"
       >
@@ -124,10 +141,13 @@ export default function Home() {
               Front-End Developer
             </p>
             {showButton && (
-              <div className="mt-80 flex flex-row items-center justify-center animate-fade-in">
+              <button 
+                onClick={scrollToNextSection}
+                className="mt-80 flex flex-row items-center justify-center animate-fade-in text-sky-400 hover:text-sky-300 transition-colors cursor-pointer"
+              >
                 <span className="text-center">برو به پایین</span>
                 <GoMoveToBottom size={22} />
-              </div>
+              </button>
             )}
           </div>
         </section>
@@ -138,18 +158,18 @@ export default function Home() {
         >
           <div className="flex flex-col items-center justify-center space-y-5 ">
             <h3 className="text-amber-50 text-2xl">درباره من</h3>
-            <div className="w-260">
+            <div className="w-100 p-2 md:w-160">
               <p className="text-center text-gray-100">
-                من آریا حسینی هستم، یک توسعه‌دهنده وب فرانت‌اند با بیش از ۳ سال
+                من آریا حسینی هستم، یک توسعه‌دهنده وب فرانت‌اند<br /> با بیش از ۳ سال
                 تجربه در ساخت برنامه‌های وب مدرن و پویا. از ایجاد رابط‌های
-                یکپارچه و مقیاس‌پذیر لذت می‌برم و به طور مداوم در حال یادگیری
+                یکپارچه<br /> و مقیاس‌پذیر لذت می‌برم و به طور مداوم در حال یادگیری
                 برای بهبود مهارت‌هایم هستم. منعطف، خلاق و اهل کار تیمی.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="min-h-screen snap-start flex justify-center items-center bg-zinc-900">
+        <section id="sec3" className="min-h-screen snap-start flex justify-center items-center bg-zinc-900">
           <div className="flex flex-col items-center justify-center space-y-5">
             <h3 className="text-amber-50 text-2xl">تکنولوژی‌ها</h3>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
@@ -206,11 +226,12 @@ export default function Home() {
         </section>
 
         <section
-          id="sec4"
-          className="min-h-screen snap-start flex justify-center items-center bg-zinc-900"
+          id="sec5"
+          className="min-h-screen snap-start flex justify-center items-center bg-zinc-900 relative"
         >
           <div className="flex flex-col items-center justify-center mt-12">
             <span className="text-amber-50 text-2xl font-bold">پروژه ها</span>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
               {projects.map((item, i) => (
                 <a
@@ -238,29 +259,32 @@ export default function Home() {
                   </div>
                 </a>
               ))}
+
               <a
                 target="_blank"
                 href="https://github.com/Aria-Hosseini?tab=repositories"
               >
                 <div
                   className="w-full h-63 rounded-2xl bg-zinc-900 border border-zinc-800 
-                  flex items-center justify-center text-white text-xl font-semibold
-                hover:border-sky-500 hover:bg-zinc-800/60 transition-all duration-300 
-                  cursor-pointer select-none 
-                  bg-[radial-gradient(circle,_rgba(255,255,255,0.20)_2px,_transparent_1px)]
-                  bg-[size:18px_18px]
-                  "
+          flex items-center justify-center text-white text-xl font-semibold
+          hover:border-sky-500 hover:bg-zinc-800/60 transition-all duration-300 
+          cursor-pointer select-none 
+          bg-[radial-gradient(circle,_rgba(255,255,255,0.20)_2px,_transparent_1px)]
+          bg-[size:18px_18px]"
                 >
                   سایر پروژه‌ها
                 </div>
               </a>
             </div>
           </div>
-        </section>
 
-        <footer>
-          
-        </footer>
+          <footer className="absolute md:bottom-4 bottom-2 left-0 w-full text-center">
+            <span className="inline-flex items-center gap-2 text-zinc-500 text-sm">
+              <span className="text-[14px]">©</span>
+              all rights reserved Aria Hosseini
+            </span>
+          </footer>
+        </section>
       </div>
     </>
   );

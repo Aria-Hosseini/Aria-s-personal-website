@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "پروپوزال من - آریا حسینی",
+  title: "آریا حسینی",
   description: "developed by the_Aria",
 };
 
